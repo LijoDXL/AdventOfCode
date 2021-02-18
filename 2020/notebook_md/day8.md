@@ -81,22 +81,33 @@ def calAccum2(instr):
 ```
 
 ```python
+def chngInstr(instr,line):
+    c,n = instr.split()
+    if c == 'nop':
+        cmd = 'jmp'
+    elif c == 'jmp':
+        cmd = 'nop'
+    else:
+        pass
+    newinstr = instructn.copy()
+    newinstr[line] = " ".join(cmd,n)
+    return newinstr
+```
+
+```python
 def chngInstr(instr):
     i = 0
     while i <= len(instr):
         for j in range(i,len(instr)):
             c = instr[j]
             act,num = c.split()
-            if act == 'nop':
-                instr[j] = f'jump {num}'
-                i = j+1
-                break
-            elif act == 'jmp':
-                instr[j] = f'nop {num}'
+            if act == 'nop' or act == 'jmp':
+                chngInstr(act,j)
                 i = j+1
                 break
             else:
-                pass
+                raise ValueError("instruction not recognized")
+                
     return instr
 ```
 
