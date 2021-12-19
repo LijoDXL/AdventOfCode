@@ -17,17 +17,8 @@ from collections import defaultdict
 ```
 
 ```python
-with open('input/day12ex3.txt') as f:
+with open('input/day12ex1.txt') as f:
     data = [d.strip().split('-') for d in f.readlines()]
-```
-
-```python
-s = start[0]
-clist = conn[s]
-while clist:
-    for c in clist:
-        asjdlkajds
-    clist = conn[c]
 ```
 
 ```python
@@ -48,7 +39,40 @@ conn
 ```
 
 ```python
-start
+paths = []
+path = ''
+for s in start:
+    P = conn[s]
+    while P:
+        c = P.pop()
+        path+=s
+        if c == 'end':
+            paths.append(path)
+            path = ''
+            continue
+        elif c.lower() == c:
+            if c not in path:
+                path += c
+        else:
+            path += c
+        for i in conn[c]:
+            P.append(i)
+```
+
+```python
+
+```
+
+```python
+
+```
+
+```python
+
+```
+
+```python
+
 ```
 
 ```python
@@ -64,55 +88,6 @@ for c in cl:
         continue
     else:
         path += c
-```
-
-```python
-paths
-```
-
-```python
-start
-```
-
-```python
-conn
-```
-
-```python
-c = start[0]
-paths = []
-p = c
-while c != 'end':
-    for cc in conn[c]:
-        if cc.lowercase() not in p:
-            p += cc
-        c = cc
-```
-
-```python
-end
-```
-
-```python
-path = []
-for s in start:
-    i = s
-    path.append(i)
-    while i not in end: 
-        for j in conn[i]:
-            path.append(conn[j])
-```
-
-```python
-for s in start:
-    path.append(s)
-    for i in conn[s]:
-        path.append(i)
-        j = i
-        while j not in end:
-            for k in conn[j]:
-                path.append(k)
-                
 ```
 
 ```python
